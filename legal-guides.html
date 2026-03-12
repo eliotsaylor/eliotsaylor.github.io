@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Guides | Santa Barbara County Law Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --warm-bg: #faf8f5;
+    --card-bg: #f2ebe1;
+    --card-bg-hover: #ebe2d5;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4540;
+    --text-muted: #7a746c;
+    --accent: #8b5e3c;
+    --accent-dark: #6b4529;
+    --border: #e0d6ca;
+    --white: #ffffff;
+    --link: #5a3e28;
+    --link-hover: #3d2a1b;
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--warm-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+  .nav-brand-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--card-bg);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+  .nav-brand-text {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--accent-dark);
+  }
+  .nav-links a.active {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 2rem 3rem;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .page-header p {
+    max-width: 660px;
+    margin: 0 auto;
+    font-size: 1.08rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+  }
+
+  /* ── GUIDE CARDS ── */
+  .guide-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+  }
+  .guide-card:hover {
+    box-shadow: 0 4px 20px rgba(139, 94, 60, 0.08);
+  }
+  .guide-card-inner {
+    padding: 1.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  .guide-card-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .guide-card-icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--accent);
+  }
+  .guide-card-content {
+    flex: 1;
+  }
+  .guide-card-content h2 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.01em;
+  }
+  .guide-card-content h2 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .guide-card-content h2 a:hover {
+    color: var(--accent-dark);
+  }
+  .guide-card-content p {
+    font-size: 0.96rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .guide-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .guide-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: var(--card-bg);
+    color: var(--accent-dark);
+  }
+  .guide-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.15rem;
+    background: var(--accent);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .guide-card-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+  }
+  .guide-card-cta svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* ── COMING SOON CARD ── */
+  .coming-soon-card {
+    background: var(--white);
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .coming-soon-card svg {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--text-muted);
+    opacity: 0.5;
+  }
+  .coming-soon-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .coming-soon-card strong {
+    color: var(--text-secondary);
+  }
+
+  /* ── NOTICE ── */
+  .notice {
+    max-width: 880px;
+    margin: 2rem auto;
+    padding: 1.15rem 1.5rem;
+    background: #f9f3eb;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .notice-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    margin-top: 1px;
+    color: var(--accent);
+  }
+  .notice a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .notice a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+  }
+
+  /* ── HELP BANNER ── */
+  .help-banner {
+    margin-top: 1rem;
+    padding: 2rem 1.75rem;
+    background: linear-gradient(135deg, #f2ebe1 0%, #e8ddd0 100%);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-align: center;
+  }
+  .help-banner h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+  .help-banner p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 1rem;
+    line-height: 1.65;
+  }
+  .help-banner a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    background: var(--text-primary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .help-banner a:hover { background: #333; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav { padding: 0.75rem 1rem; }
+    .nav-links { display: none; }
+    .page-header { padding: 2.5rem 1.25rem 2rem; }
+    .page-header h1 { font-size: 1.8rem; }
+    .content { padding: 1.5rem 1.25rem 3rem; }
+    .notice { margin: 1.5rem 1.25rem; }
+    .guide-card-inner { flex-direction: column; }
+  }
+
+  /* ── SKIP LINK (accessibility) ── */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent);
+    color: white;
+    padding: 8px;
+    z-index: 200;
+    font-size: 0.9rem;
+  }
+  .skip-link:focus { top: 0; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- NAV -->
+<!-- <nav class="nav" aria-label="Main navigation">
+  <a href="/" class="nav-brand">
+    <span class="nav-brand-icon" aria-hidden="true">⚖</span>
+    <span class="nav-brand-text">Santa Barbara County Law Library</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/court-forms">Court Forms</a></li>
+    <li><a href="/legal-resources">Legal Resources</a></li>
+    <li><a href="/legal-guides" class="active" aria-current="page">Legal Guides</a></li>
+    <li><a href="/rules">Rules</a></li>
+    <li><a href="/board-meetings">Board Meetings</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav> -->
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <h1>Legal Guides</h1>
+  <p>Curated guides prepared by Law Library staff on common legal topics. Each guide brings together relevant laws, court forms, local resources, and research tools in one place to help you get started.</p>
+</header>
+
+<main id="main-content">
+
+  <!-- NOTICE -->
+  <div class="notice" role="note">
+    <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <div>
+      <strong>Note:</strong> These guides are provided for informational purposes to help you find legal resources. Law Library staff cannot provide legal advice. If you need legal advice, consider consulting with an attorney or contacting a legal aid organization. Looking for links to courts, statutes, and government websites? Visit <a href="/legal-resources">Legal Resources</a>.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- EVICTION GUIDE -->
+    <article class="guide-card">
+      <div class="guide-card-inner">
+        <div class="guide-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="guide-card-content">
+          <h2><a href="/legal-guides/eviction-unlawful-detainer">Eviction &amp; Unlawful Detainer</a></h2>
+          <div class="guide-card-meta">
+            <span class="guide-tag">Landlord-Tenant</span>
+            <span class="guide-tag">Housing</span>
+          </div>
+          <p>A guide to the residential eviction process in California, landlord-tenant laws at the state and local level, court forms, e-filing tools, and legal publications. Includes resources for both tenants and landlords, local ordinances for Santa Barbara County cities, and information about free legal assistance.</p>
+          <a href="/legal-guides/eviction-unlawful-detainer" class="guide-card-cta">
+            View Guide
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- COMING SOON PLACEHOLDERS -->
+    <div class="coming-soon-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <p><strong>More guides coming soon.</strong> Law Library staff are developing additional guides on topics such as family law, probate, small claims, and name changes. Check back for updates.</p>
+    </div>
+
+    <!-- HELP BANNER -->
+    <section class="help-banner" aria-labelledby="help-heading">
+      <h3 id="help-heading">Suggest a Topic</h3>
+      <p>Is there a legal topic you would like us to create a guide for? Let us know and we will consider adding it to our collection.</p>
+      <a href="/contact">
+        Contact the Law Library
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Santa Barbara County Law Library · 1100 Anacapa Street, 2nd Floor, Santa Barbara, CA 93101 · <a href="tel:805-568-2297">(805) 568-2297</a></p>
+  <p style="margin-top: 0.35rem;">Connecting the public to the law: free, open, and accessible to all.</p>
+</footer>
+
+</body>
+</html>

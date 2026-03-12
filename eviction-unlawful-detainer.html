@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eviction &amp; Unlawful Detainer Resources | Santa Barbara County Law Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --warm-bg: #faf8f5;
+    --card-bg: #f2ebe1;
+    --card-bg-hover: #ebe2d5;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4540;
+    --text-muted: #7a746c;
+    --accent: #8b5e3c;
+    --accent-dark: #6b4529;
+    --border: #e0d6ca;
+    --white: #ffffff;
+    --link: #5a3e28;
+    --link-hover: #3d2a1b;
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--warm-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+  .nav-brand-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--card-bg);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+  .nav-brand-text {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--accent-dark);
+  }
+  .nav-links a.active {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+  }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 1rem 2rem 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .breadcrumb a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .breadcrumb a:hover {
+    color: var(--accent-dark);
+    text-decoration: underline;
+  }
+  .breadcrumb .sep {
+    margin: 0 0.4rem;
+    opacity: 0.5;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 2rem 3rem;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .page-header p {
+    max-width: 660px;
+    margin: 0 auto;
+    font-size: 1.08rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── ALERT NOTICE ── */
+  .notice {
+    max-width: 880px;
+    margin: 2rem auto;
+    padding: 1.15rem 1.5rem;
+    background: #f9f3eb;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .notice-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    margin-top: 1px;
+    color: var(--accent);
+  }
+  .notice.notice-urgent {
+    background: #fdf5f0;
+    border-left-color: #c0622b;
+  }
+  .notice.notice-urgent .notice-icon {
+    color: #c0622b;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 1rem 2rem 4rem;
+  }
+
+  /* ── SECTION DIVIDERS ── */
+  .section-label {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 2.5rem 0 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-label:first-child {
+    margin-top: 0.5rem;
+  }
+
+  /* ── RESOURCE CARDS ── */
+  .resource-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+  }
+  .resource-card:hover {
+    box-shadow: 0 4px 20px rgba(139, 94, 60, 0.08);
+  }
+  .resource-card-header {
+    padding: 1.5rem 1.75rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .resource-card-icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .resource-card-icon svg {
+    width: 26px;
+    height: 26px;
+    color: var(--accent);
+  }
+  .resource-card-header h2 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.15rem;
+    letter-spacing: -0.01em;
+  }
+  .resource-card-header .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: var(--card-bg);
+    color: var(--accent-dark);
+    margin-top: 0.25rem;
+  }
+  .resource-card-body {
+    padding: 1rem 1.75rem 1.5rem;
+  }
+  .resource-card-body p {
+    font-size: 0.96rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .resource-card-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── LINK LIST ── */
+  .link-list {
+    list-style: none;
+    margin: 0.75rem 0 1.15rem;
+  }
+  .link-list li {
+    margin-bottom: 0.2rem;
+  }
+  .link-list li.sub-item {
+    padding-left: 1.5rem;
+  }
+  .link-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .link-item:hover {
+    background: var(--card-bg);
+  }
+  .link-item-dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.5;
+    margin-top: 0.55em;
+    align-self: flex-start;
+  }
+  .link-item-dot.sub {
+    width: 5px;
+    height: 5px;
+    opacity: 0.35;
+    background: var(--text-muted);
+  }
+  .link-item-content {
+    flex: 1;
+  }
+  .link-item a {
+    color: var(--link);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .link-item a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+  }
+  .link-item .link-desc {
+    display: block;
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-top: 0.15rem;
+  }
+  .link-item .link-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  /* ── INLINE LINK (for use within paragraphs) ── */
+  .body-link {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .body-link:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+  }
+
+  /* ── LIBRARY RESOURCE BOXES ── */
+  .lib-resources {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    margin: 0.75rem 0 1.15rem;
+  }
+  .lib-resource-item {
+    padding: 0.85rem 1rem;
+    background: var(--card-bg);
+    border-radius: 7px;
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+  }
+  .lib-resource-item svg {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--accent);
+    margin-top: 3px;
+    opacity: 0.7;
+  }
+  .lib-resource-item .lib-resource-text {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .lib-resource-item .lib-resource-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* ── CITY ORDINANCE GRID ── */
+  .ordinance-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin: 0.75rem 0 1.15rem;
+  }
+  .ordinance-item {
+    padding: 0.7rem 1rem;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--white);
+  }
+  .ordinance-item-city {
+    font-weight: 600;
+    font-size: 0.93rem;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+  }
+  .ordinance-item-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+  .ordinance-item-links a {
+    font-size: 0.87rem;
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .ordinance-item-links a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+  }
+  .ordinance-item-links .ordinance-link-label {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+  }
+
+  /* ── CTA BUTTON ── */
+  .resource-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.25rem;
+    background: var(--accent);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .resource-card-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+  }
+  .resource-card-cta svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ── HELP BANNER ── */
+  .help-banner {
+    margin-top: 2rem;
+    padding: 2rem 1.75rem;
+    background: linear-gradient(135deg, #f2ebe1 0%, #e8ddd0 100%);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-align: center;
+  }
+  .help-banner h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+  .help-banner p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 560px;
+    margin: 0 auto 1rem;
+    line-height: 1.65;
+  }
+  .help-banner .help-banner-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .help-banner a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    background: var(--text-primary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .help-banner a:hover { background: #333; }
+  .help-banner a.help-banner-secondary {
+    background: var(--white);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+  .help-banner a.help-banner-secondary:hover {
+    background: var(--card-bg);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav { padding: 0.75rem 1rem; }
+    .nav-links { display: none; }
+    .page-header { padding: 2.5rem 1.25rem 2rem; }
+    .page-header h1 { font-size: 1.8rem; }
+    .content { padding: 1rem 1.25rem 3rem; }
+    .notice { margin: 1.5rem 1.25rem; }
+    .resource-card-header { flex-direction: column; }
+    .breadcrumb { padding: 0.75rem 1.25rem 0; }
+  }
+
+  /* ── SKIP LINK (accessibility) ── */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent);
+    color: white;
+    padding: 8px;
+    z-index: 200;
+    font-size: 0.9rem;
+  }
+  .skip-link:focus { top: 0; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- NAV -->
+<!-- <nav class="nav" aria-label="Main navigation">
+  <a href="/" class="nav-brand">
+    <span class="nav-brand-icon" aria-hidden="true">⚖</span>
+    <span class="nav-brand-text">Santa Barbara County Law Library</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/court-forms">Court Forms</a></li>
+    <li><a href="/legal-resources">Legal Resources</a></li>
+    <li><a href="/legal-guides" class="active" aria-current="page">Legal Guides</a></li>
+    <li><a href="/rules">Rules</a></li>
+    <li><a href="/board-meetings">Board Meetings</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav> -->
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <h1>Eviction &amp; Unlawful Detainer Resources</h1>
+  <p>A guide to the eviction process, landlord-tenant laws, court forms, and related resources for tenants and landlords in Santa Barbara County.</p>
+</header>
+
+<main id="main-content">
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/legal-guides">Legal Guides</a>
+    <span class="sep" aria-hidden="true">›</span>
+    <span>Eviction &amp; Unlawful Detainer</span>
+  </nav>
+
+  <!-- URGENT NOTICE -->
+  <div class="notice notice-urgent" role="alert">
+    <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <div>
+      <strong>Act quickly.</strong> Eviction actions generally move swiftly, so it is important to act promptly if you are served with an eviction notice, your landlord tells you to move out, or you believe your rent has been increased illegally.
+    </div>
+  </div>
+
+  <!-- GENERAL NOTICE -->
+  <div class="notice" role="note" style="max-width:880px;">
+    <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <div>
+      Staff at the Santa Barbara County Law Library are available to assist you in locating the resources you need, but they may not give legal advice. See the <a href="/" class="body-link">home page</a> for contact information. If you would like to speak with an attorney at no cost on a first-come, first-served basis, visit the <a href="https://www.santabarbara.courts.ca.gov/self-help-legal-resource-centers" class="body-link" target="_blank" rel="noopener noreferrer">Santa Barbara County Legal Resource Center</a>.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ============================================ -->
+    <!-- EVICTION PROCESS & FORMS -->
+    <!-- ============================================ -->
+    <h3 class="section-label">Eviction Process &amp; Court Forms</h3>
+
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <h2>Understanding the Eviction Process</h2>
+          <span class="badge">California Courts Self-Help</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>The California Courts Self-Help website provides step-by-step guidance on the residential eviction process from both the tenant's and the landlord's perspective, including information about notice types, timelines, and what to expect at each stage.</p>
+
+        <ul class="link-list">
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://selfhelp.courts.ca.gov/eviction" target="_blank" rel="noopener noreferrer">Overview of the Residential Eviction Process in California</a>
+                <span class="link-desc">Covers the process from both tenant's and landlord's perspectives.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://selfhelp.courts.ca.gov/eviction-landlord/notice-types" target="_blank" rel="noopener noreferrer">How to Start or Respond to an Eviction Action</a>
+                <span class="link-desc">Information about notice types and how to proceed as a landlord or tenant.</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div>
+          <h2>Eviction &amp; Unlawful Detainer Forms</h2>
+          <span class="badge">Court Forms &amp; Filing</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>The forms needed for eviction and unlawful detainer actions are available from both the Santa Barbara County Superior Court and the statewide Judicial Council. You may also use the Odyssey Guide and File system to prepare and e-file certain documents.</p>
+
+        <ul class="link-list">
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.santabarbara.courts.ca.gov/civil-self-help/self-help-evictions" target="_blank" rel="noopener noreferrer">SB Superior Court: Self-Help Evictions Page</a>
+                <span class="link-desc">Local court resources and forms for eviction and unlawful detainer cases.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.courts.ca.gov/1290.htm?rdeLocaleAttr=en" target="_blank" rel="noopener noreferrer">Judicial Council: Unlawful Detainer Forms</a>
+                <span class="link-desc">Statewide court forms for unlawful detainer actions in California.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.santabarbara.courts.ca.gov/divisions/evictionsunlawful-detainers" target="_blank" rel="noopener noreferrer">SB Superior Court: Evictions/Unlawful Detainers Division</a>
+                <span class="link-desc">Clerk's office contact information and filing fees.</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div>
+          <h2>Odyssey Guide and File (E-Filing)</h2>
+          <span class="badge">Online Filing Tool</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>Odyssey Guide and File is an interactive software program that helps you draft the appropriate legal documents through a series of interview-style questions. It is available only for certain types of actions and only for electronic filing. Do not use this tool if you prefer not to e-file. Scroll down the linked page to access the tool.</p>
+
+        <ul class="link-list">
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.santabarbara.courts.ca.gov/online-services/e-filing" target="_blank" rel="noopener noreferrer">SB Superior Court: E-Filing (Odyssey Guide and File)</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://content.tylerhost.net/docs/NV/OFSFilersUserGuide.pdf" target="_blank" rel="noopener noreferrer">Odyssey Guide and File: User Guide (PDF)</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ============================================ -->
+    <!-- LANDLORD-TENANT LAWS -->
+    <!-- ============================================ -->
+    <h3 class="section-label">Landlord-Tenant Laws</h3>
+
+    <!-- STATE LAWS -->
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16"/><path d="M4 22V8l8-6 8 6v14"/><path d="M9 22v-6h6v6"/><path d="M9 12h1"/><path d="M14 12h1"/></svg>
+        </div>
+        <div>
+          <h2>State of California</h2>
+          <span class="badge">State Landlord-Tenant Laws</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>California has extensive laws governing the landlord-tenant relationship, including rules about security deposits, rent increases, habitability standards, eviction procedures, and more. The following resources can help you understand your rights and obligations under state law.</p>
+
+        <ul class="link-list">
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://oag.ca.gov/consumers/general/landlord-tenant-issues" target="_blank" rel="noopener noreferrer">CA Attorney General: Landlord-Tenant Issues and Related Laws</a>
+                <span class="link-desc">Official guidance from the California Department of Justice.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.nolo.com/legal-encyclopedia/overview-landlord-tenant-laws-california.html" target="_blank" rel="noopener noreferrer">Overview of Landlord-Tenant Laws in California (Nolo Press)</a>
+                <span class="link-desc">Nolo Press publishes books about the law written by attorneys for non-attorneys.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://leginfo.legislature.ca.gov/faces/codes.xhtml" target="_blank" rel="noopener noreferrer">California Statutes: Read the Relevant Laws</a>
+                <span class="link-desc">To find a specific section (for example, Civil Code section 1946.1), go to the "Code" box in the upper right corner, select "CIV" from the dropdown, and enter the section number.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=201920200AB1482" target="_blank" rel="noopener noreferrer">2019 Tenant Protection Act (AB 1482)</a>
+                <span class="link-desc">Statewide rent cap and just-cause eviction protections for eligible residential tenancies.</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- LOCAL LAWS -->
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg>
+        </div>
+        <div>
+          <h2>Local Ordinances</h2>
+          <span class="badge">Santa Barbara County &amp; Cities</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>In addition to state laws, the County of Santa Barbara and several of its cities have their own local ordinances that may affect landlord-tenant relationships, including tenant protection measures, rent stabilization for mobilehomes, and housing regulations. Select a jurisdiction below to view its relevant ordinances.</p>
+
+        <div class="ordinance-grid">
+          <!-- County of SB -->
+          <div class="ordinance-item">
+            <div class="ordinance-item-city">County of Santa Barbara</div>
+            <div class="ordinance-item-links">
+              <span class="ordinance-link-label">Municipal Code, Chapter 44: Residential Property, Landlords and Tenants Rights and Duties</span>
+            </div>
+          </div>
+
+          <!-- Carpinteria -->
+          <div class="ordinance-item">
+            <div class="ordinance-item-city">Carpinteria</div>
+            <div class="ordinance-item-links">
+              <a href="https://library.municode.com/ca/carpinteria/codes/code_of_ordinances?nodeId=TIT7HORE" target="_blank" rel="noopener noreferrer">Chapter 7: Housing Regulations</a>
+            </div>
+          </div>
+
+          <!-- Goleta -->
+          <div class="ordinance-item">
+            <div class="ordinance-item-city">Goleta</div>
+            <div class="ordinance-item-links">
+              <a href="https://ecode360.com/44351524" target="_blank" rel="noopener noreferrer">Chapter 8.19: Tenant Protections</a>
+              <a href="https://ecode360.com/44351089" target="_blank" rel="noopener noreferrer">Chapter 8.14: Mobilehome Rent Control</a>
+            </div>
+          </div>
+
+          <!-- Isla Vista -->
+          <div class="ordinance-item">
+            <div class="ordinance-item-city">Isla Vista <span style="font-weight:400; color: var(--text-muted); font-size:0.85rem;">(unincorporated community, 9 miles west of Santa Barbara)</span></div>
+            <div class="ordinance-item-links">
+              <a href="https://www.sblafco.org/isla-vista-community-services-district" target="_blank" rel="noopener noreferrer">Community Services District</a>
+              <a href="https://islavistacsd.ca.gov/faqs" target="_blank" rel="noopener noreferrer">FAQs</a>
+              <a href="https://islavistacsd.ca.gov/renter-resources" target="_blank" rel="noopener noreferrer">Renter Resources</a>
+            </div>
+          </div>
+
+          <!-- Lompoc -->
+          <div class="ordinance-item">
+            <div class="ordinance-item-city">Lompoc</div>
+            <div class="ordinance-item-links">
+              <a href="https://ecode360.com/43244223" target="_blank" rel="noopener noreferrer">Chapter 5.60: Mobilehome Rent Stabilization</a>
+            </div>
+          </div>
+
+          <!-- Santa Barbara -->
+          <div class="ordinance-item">
+            <div class="ordinance-item-city">Santa Barbara</div>
+            <div class="ordinance-item-links">
+              <a href="https://ecode360.com/44109324#44109324" target="_blank" rel="noopener noreferrer">Municipal Code, Title 26</a>
+            </div>
+          </div>
+
+          <!-- Santa Maria -->
+          <div class="ordinance-item">
+            <div class="ordinance-item-city">Santa Maria</div>
+            <div class="ordinance-item-links">
+              <a href="https://www.cityofsantamaria.org/about-us/codes-and-documents" target="_blank" rel="noopener noreferrer">Codes and Documents</a>
+            </div>
+          </div>
+
+          <!-- Solvang -->
+          <div class="ordinance-item">
+            <div class="ordinance-item-city">Solvang</div>
+            <div class="ordinance-item-links">
+              <a href="https://ecode360.com/SO5014" target="_blank" rel="noopener noreferrer">Municipal Code</a>
+              <a href="https://www.cityofsolvang.com/561/Fair-Housing" target="_blank" rel="noopener noreferrer">Fair Housing</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============================================ -->
+    <!-- LEGAL PUBLICATIONS & DIGITAL RESOURCES -->
+    <!-- ============================================ -->
+    <h3 class="section-label">Legal Publications &amp; Research</h3>
+
+    <!-- NOLO PRESS (REMOTE ACCESS) -->
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div>
+          <h2>Nolo Press</h2>
+          <span class="badge">Available Remotely</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>Nolo Press publishes legal guides written by attorneys for non-attorneys. The following Nolo titles on landlord-tenant law are available remotely through the Law Library's subscription. To access them, visit the URL below and enter the login credentials when prompted.</p>
+
+        <p><strong>Access:</strong> <a href="http://search.ebscohost.com" class="body-link" target="_blank" rel="noopener noreferrer">search.ebscohost.com</a><br>
+        <strong>User ID:</strong> countylaw<br>
+        <strong>Password:</strong> mcMahon1891!</p>
+
+        <div class="lib-resources">
+          <div class="lib-resource-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <div class="lib-resource-text">
+              <strong>For Tenants:</strong> California Tenants' Rights, Every Tenant's Legal Guide, and Renters' Rights
+            </div>
+          </div>
+          <div class="lib-resource-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <div class="lib-resource-text">
+              <strong>For Landlords:</strong> The California Landlord's Law Book: Evictions
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- IN-LIBRARY RESOURCES -->
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h2>In-Library Print &amp; Digital Resources</h2>
+          <span class="badge">Available at the Law Library Only</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>The following legal research tools are available to the public within the Law Library. These are professional-grade resources commonly used by attorneys and are available for you to use at no cost during library hours.</p>
+
+        <div class="lib-resources">
+          <div class="lib-resource-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <div class="lib-resource-text">
+              <strong>CEB OnLAW:</strong> CA Eviction Defense Manual, CA Landlord-Tenant Practice, and Handling Unlawful Detainers (Action Guide)
+            </div>
+          </div>
+          <div class="lib-resource-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <div class="lib-resource-text">
+              <strong>LexisNexis:</strong> CA Forms of Pleading and Practice, Vol. 29: Landlord and Tenant
+            </div>
+          </div>
+          <div class="lib-resource-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <div class="lib-resource-text">
+              <strong>Westlaw:</strong> Landlord-Tenant (TRG, CA Practice Guide)
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============================================ -->
+    <!-- ADDITIONAL RESOURCES -->
+    <!-- ============================================ -->
+    <h3 class="section-label">Additional Resources</h3>
+
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div>
+          <h2>Guides, Organizations &amp; Services</h2>
+          <span class="badge">For Tenants &amp; Landlords</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+
+        <ul class="link-list">
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.dre.ca.gov/publications/ResourceGuidebook/index.html" target="_blank" rel="noopener noreferrer">Guide to Residential Tenants' and Landlords' Rights and Responsibilities</a>
+                <span class="link-desc">Published by the California Department of Real Estate.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.sbrpa.org/" target="_blank" rel="noopener noreferrer">Santa Barbara Real Property Owners Association (SBRPA)</a>
+                <span class="link-desc">A local resource for landlords and property owners.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://santabarbaraca.gov/services/housing-human-services/rental-housing-mediation-program/landlord-tenant-rights" target="_blank" rel="noopener noreferrer">City of Santa Barbara: Rental Housing Mediation Program</a>
+                <span class="link-desc">Assistance with landlord-tenant disputes in the City of Santa Barbara.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://sblaw.org/sbcba-lawyer-referral-service/" target="_blank" rel="noopener noreferrer">SB County Bar Association: Lawyer Referral Service</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://legalfaq.org/covid/ca" target="_blank" rel="noopener noreferrer">Legal Help FAQs on Eviction Problems</a>
+                <span class="link-desc">A resource from Stanford Law School and the Pew Foundation.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="http://www.dfeh.ca.gov/" target="_blank" rel="noopener noreferrer">California Department of Fair Housing and Employment</a>
+                <span class="link-desc">For matters involving housing discrimination.</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://portal.hud.gov/hudportal/HUD?src=/states/california" target="_blank" rel="noopener noreferrer">U.S. Department of Housing and Urban Development (HUD)</a>
+                <span class="link-desc">For Section 8 housing matters and federal housing programs.</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- HELP BANNER -->
+    <section class="help-banner" aria-labelledby="help-heading">
+      <h3 id="help-heading">Need Help with an Eviction Matter?</h3>
+      <p>Law Library staff can help you locate forms and legal resources. For free legal assistance, contact the Santa Barbara County Legal Resource Center. We cannot provide legal advice, but we can help you find what you need.</p>
+      <div class="help-banner-buttons">
+        <a href="/contact">
+          Contact the Law Library
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="/legal-guides" class="help-banner-secondary">
+          Back to Legal Guides
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Santa Barbara County Law Library · 1100 Anacapa Street, 2nd Floor, Santa Barbara, CA 93101 · <a href="tel:805-568-2297">(805) 568-2297</a></p>
+  <p style="margin-top: 0.35rem;">Connecting the public to the law: free, open, and accessible to all.</p>
+</footer>
+
+</body>
+</html>

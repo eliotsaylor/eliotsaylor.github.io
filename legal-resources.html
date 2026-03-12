@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Resources | Santa Barbara County Law Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --warm-bg: #faf8f5;
+    --card-bg: #f2ebe1;
+    --card-bg-hover: #ebe2d5;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4540;
+    --text-muted: #7a746c;
+    --accent: #8b5e3c;
+    --accent-dark: #6b4529;
+    --border: #e0d6ca;
+    --white: #ffffff;
+    --link: #5a3e28;
+    --link-hover: #3d2a1b;
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--warm-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+  .nav-brand-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--card-bg);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+  .nav-brand-text {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--accent-dark);
+  }
+  .nav-links a.active {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 2rem 3rem;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .page-header p {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 1.08rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── NOTICE ── */
+  .notice {
+    max-width: 880px;
+    margin: 2rem auto;
+    padding: 1.15rem 1.5rem;
+    background: #f9f3eb;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .notice-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    margin-top: 1px;
+    color: var(--accent);
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 1rem 2rem 4rem;
+  }
+
+  /* ── SECTION DIVIDERS ── */
+  .section-label {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 2.5rem 0 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-label:first-child {
+    margin-top: 0.5rem;
+  }
+
+  /* ── RESOURCE CARDS ── */
+  .resource-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+  }
+  .resource-card:hover {
+    box-shadow: 0 4px 20px rgba(139, 94, 60, 0.08);
+  }
+  .resource-card-header {
+    padding: 1.5rem 1.75rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .resource-card-icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .resource-card-icon svg {
+    width: 26px;
+    height: 26px;
+    color: var(--accent);
+  }
+  .resource-card-header h2 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.15rem;
+    letter-spacing: -0.01em;
+  }
+  .resource-card-header .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: var(--card-bg);
+    color: var(--accent-dark);
+    margin-top: 0.25rem;
+  }
+  .resource-card-body {
+    padding: 1rem 1.75rem 1.5rem;
+  }
+  .resource-card-body p {
+    font-size: 0.96rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .resource-card-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── LINK LIST ── */
+  .link-list {
+    list-style: none;
+    margin: 0.75rem 0 1.15rem;
+  }
+  .link-list li {
+    margin-bottom: 0.2rem;
+  }
+  .link-list li.sub-item {
+    padding-left: 1.5rem;
+  }
+  .link-list li.sub-sub-item {
+    padding-left: 3rem;
+  }
+  .link-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .link-item:hover {
+    background: var(--card-bg);
+  }
+  .link-item-dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.5;
+    margin-top: 0.55em;
+    align-self: flex-start;
+  }
+  .link-item-dot.sub {
+    width: 5px;
+    height: 5px;
+    opacity: 0.35;
+    background: var(--text-muted);
+  }
+  .link-item-content {
+    flex: 1;
+  }
+  .link-item a {
+    color: var(--link);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .link-item a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+  }
+  .link-item .link-desc {
+    display: block;
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-top: 0.15rem;
+  }
+
+  /* ── CTA BUTTON ── */
+  .resource-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.25rem;
+    background: var(--accent);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .resource-card-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+  }
+  .resource-card-cta svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ── MUNICIPAL CODE GRID ── */
+  .muni-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin: 0.75rem 0 1.15rem;
+  }
+  .muni-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.65rem 0.85rem;
+    background: var(--card-bg);
+    border-radius: 7px;
+    text-decoration: none;
+    color: var(--link);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+  }
+  .muni-item:hover {
+    background: var(--card-bg-hover);
+    color: var(--link-hover);
+  }
+  .muni-item svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--accent);
+    opacity: 0.6;
+  }
+  .muni-item-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-left: 0.25rem;
+  }
+
+  /* ── TIPS SECTION ── */
+  .tips-section {
+    margin-top: 2.5rem;
+    padding: 2rem 1.75rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .tips-section h2 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .tip-item {
+    padding: 1rem 1.15rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .tip-item svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+  .tip-item p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .tip-item strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* ── HELP BANNER ── */
+  .help-banner {
+    margin-top: 2rem;
+    padding: 2rem 1.75rem;
+    background: linear-gradient(135deg, #f2ebe1 0%, #e8ddd0 100%);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-align: center;
+  }
+  .help-banner h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+  .help-banner p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 1rem;
+    line-height: 1.65;
+  }
+  .help-banner a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    background: var(--text-primary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .help-banner a:hover { background: #333; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav { padding: 0.75rem 1rem; }
+    .nav-links { display: none; }
+    .page-header { padding: 2.5rem 1.25rem 2rem; }
+    .page-header h1 { font-size: 1.8rem; }
+    .content { padding: 1rem 1.25rem 3rem; }
+    .notice { margin: 1.5rem 1.25rem; }
+    .tips-grid { grid-template-columns: 1fr; }
+    .muni-grid { grid-template-columns: 1fr; }
+    .resource-card-header { flex-direction: column; }
+  }
+
+  /* ── SKIP LINK (accessibility) ── */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent);
+    color: white;
+    padding: 8px;
+    z-index: 200;
+    font-size: 0.9rem;
+  }
+  .skip-link:focus { top: 0; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- NAV -->
+<!-- <nav class="nav" aria-label="Main navigation">
+  <a href="/" class="nav-brand">
+    <span class="nav-brand-icon" aria-hidden="true">⚖</span>
+    <span class="nav-brand-text">Santa Barbara County Law Library</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/court-forms">Court Forms</a></li>
+    <li><a href="/legal-resources" class="active" aria-current="page">Legal Resources</a></li>
+    <li><a href="/legal-guides">Legal Guides</a></li>
+    <li><a href="/rules">Rules</a></li>
+    <li><a href="/board-meetings">Board Meetings</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav> -->
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <h1>Legal Resources</h1>
+  <p>Explore links to local, state, and federal government websites, legal information databases, and other resources to help you research the law and find what you need.</p>
+</header>
+
+<main id="main-content">
+
+  <!-- NOTICE -->
+  <div class="notice" role="note">
+    <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <div>
+      <strong>Note:</strong> The Law Library provides these links as a public service to help you find legal information. We cannot provide legal advice or interpret the law for you, but our staff can help you locate the resources you need. If you need legal advice, consider consulting with an attorney or contacting a legal aid organization.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ============================================ -->
+    <!-- LOCAL GOVERNMENT -->
+    <!-- ============================================ -->
+    <h3 class="section-label">Local Government</h3>
+
+    <!-- CARD: MUNICIPAL CODES -->
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg>
+        </div>
+        <div>
+          <h2>Municipal Codes &amp; Local Ordinances</h2>
+          <span class="badge">County of Santa Barbara &amp; Cities</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>Municipal codes contain the local laws and ordinances that govern the County of Santa Barbara and each of its incorporated cities. These codes cover topics such as zoning, building regulations, business licensing, public safety, and more. Select a jurisdiction below to view its municipal code.</p>
+
+        <div class="muni-grid">
+          <a href="https://www.countyofsb.org/county-code" class="muni-item" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            County of Santa Barbara
+          </a>
+          <a href="https://library.municode.com/ca/carpinteria" class="muni-item" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            City of Carpinteria
+          </a>
+          <a href="https://library.municode.com/ca/goleta" class="muni-item" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            City of Goleta
+          </a>
+          <a href="https://www.cityoflompoc.com/government/municipal-code" class="muni-item" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            City of Lompoc
+          </a>
+          <a href="https://www.santabarbaraca.gov/gov/depts/citylaw/muni.asp" class="muni-item" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            City of Santa Barbara
+          </a>
+          <a href="https://library.municode.com/ca/santa_maria" class="muni-item" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            City of Santa Maria
+          </a>
+          <a href="https://www.cityofsolvang.com/municipal-code" class="muni-item" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            City of Solvang
+          </a>
+          <span class="muni-item" style="background: transparent; border: 1px dashed var(--border); color: var(--text-muted); cursor: default;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Isla Vista <span class="muni-item-note">(unincorporated)</span>
+          </span>
+        </div>
+
+        <p style="font-size:0.88rem; color: var(--text-muted);">Isla Vista is an unincorporated community located approximately 9 miles west of Santa Barbara. As an unincorporated area, it is governed by the County of Santa Barbara rather than its own city council.</p>
+      </div>
+    </article>
+
+    <!-- ============================================ -->
+    <!-- STATE GOVERNMENT -->
+    <!-- ============================================ -->
+    <h3 class="section-label">State Government</h3>
+
+    <!-- CARD: CALIFORNIA STATE GOVERNMENT -->
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16"/><path d="M4 22V8l8-6 8 6v14"/><path d="M9 22v-6h6v6"/><path d="M9 12h1"/><path d="M14 12h1"/></svg>
+        </div>
+        <div>
+          <h2>California State Government</h2>
+          <span class="badge">State of California</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>California's state government is organized into three branches: the Legislature (which creates laws), the Judiciary (which interprets laws), and the Executive (which enforces laws). The links below will help you find California statutes, court information, and other state government resources.</p>
+
+        <ul class="link-list">
+          <!-- CA.gov -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.ca.gov/" target="_blank" rel="noopener noreferrer">California State Government (ca.gov)</a>
+                <span class="link-desc">Find information about state agencies, departments, and services including vital records such as birth, marriage, and death certificates.</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- Legislature -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://leginfo.legislature.ca.gov/" target="_blank" rel="noopener noreferrer">California Legislative Information</a>
+                <span class="link-desc">Search California statutes (state laws), review Assembly and Senate Bill information, and track pending legislation.</span>
+              </div>
+            </div>
+          </li>
+          <li class="sub-item">
+            <div class="link-item">
+              <span class="link-item-dot sub" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.senate.ca.gov/" target="_blank" rel="noopener noreferrer">California State Senate</a>
+              </div>
+            </div>
+          </li>
+          <li class="sub-item">
+            <div class="link-item">
+              <span class="link-item-dot sub" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.assembly.ca.gov/" target="_blank" rel="noopener noreferrer">California State Assembly</a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Judicial Branch -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://courts.ca.gov/" target="_blank" rel="noopener noreferrer">California Judicial Branch (the Courts)</a>
+                <span class="link-desc">The official website of the California Courts, including court forms, rules, and information about the state court system.</span>
+              </div>
+            </div>
+          </li>
+          <li class="sub-item">
+            <div class="link-item">
+              <span class="link-item-dot sub" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://courts.ca.gov/courts/superior-courts" target="_blank" rel="noopener noreferrer">Find Your Superior Court</a>
+                <span class="link-desc">There are 58 Superior Courts in California, one in each county. Locate your county's court here.</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- Attorney General -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://oag.ca.gov/" target="_blank" rel="noopener noreferrer">California Attorney General</a>
+              </div>
+            </div>
+          </li>
+
+          <!-- State Bar -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.calbar.ca.gov/" target="_blank" rel="noopener noreferrer">State Bar of California</a>
+                <span class="link-desc">Look up a licensed attorney, file a complaint, or find information about the legal profession in California.</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ============================================ -->
+    <!-- FEDERAL GOVERNMENT -->
+    <!-- ============================================ -->
+    <h3 class="section-label">Federal Government</h3>
+
+    <!-- CARD: FEDERAL GOVERNMENT RESOURCES -->
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div>
+          <h2>Federal Government Resources</h2>
+          <span class="badge">United States Government</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>The federal government of the United States is made up of three branches: the Legislative branch (Congress), the Executive branch (the President and federal agencies), and the Judicial branch (the federal courts). The links below provide access to federal laws, court information, and other government resources.</p>
+
+        <ul class="link-list">
+          <!-- USA.gov -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.usa.gov" target="_blank" rel="noopener noreferrer">USA.gov</a>
+                <span class="link-desc">The official web portal of the United States government with information about federal agencies, benefits, and services.</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- Supreme Court -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.supremecourt.gov/" target="_blank" rel="noopener noreferrer">United States Supreme Court</a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Federal Courts -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.uscourts.gov/" target="_blank" rel="noopener noreferrer">Federal Courts (uscourts.gov)</a>
+                <span class="link-desc">The home of the federal judiciary, including information on district courts, circuit courts, and the Supreme Court.</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- Ninth Circuit -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.ca9.uscourts.gov/" target="_blank" rel="noopener noreferrer">Ninth Circuit Court of Appeals</a>
+                <span class="link-desc">Santa Barbara County is within the Ninth Circuit, which covers federal appeals from California and other western states.</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- Congress -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.congress.gov/" target="_blank" rel="noopener noreferrer">United States Congress (congress.gov)</a>
+                <span class="link-desc">Search federal legislation, the Congressional Record, and committee reports.</span>
+              </div>
+            </div>
+          </li>
+          <li class="sub-item">
+            <div class="link-item">
+              <span class="link-item-dot sub" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.senate.gov/" target="_blank" rel="noopener noreferrer">U.S. Senate</a>
+              </div>
+            </div>
+          </li>
+          <li class="sub-item">
+            <div class="link-item">
+              <span class="link-item-dot sub" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.house.gov/" target="_blank" rel="noopener noreferrer">U.S. House of Representatives</a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Library of Congress -->
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.loc.gov/" target="_blank" rel="noopener noreferrer">Library of Congress</a>
+                <span class="link-desc">Access the nation's library, including historical legal documents, legislative records, and research materials.</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ============================================ -->
+    <!-- FREE LEGAL INFORMATION -->
+    <!-- ============================================ -->
+    <h3 class="section-label">Free Legal Information</h3>
+
+    <!-- CARD: FREE LEGAL INFO -->
+    <article class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div>
+          <h2>Free Legal Information Websites</h2>
+          <span class="badge">Research &amp; Reference</span>
+        </div>
+      </div>
+      <div class="resource-card-body">
+        <p>The following websites provide free access to legal information, including federal and state statutes, court opinions, regulations, and legal encyclopedias. These are valuable tools for anyone researching the law on their own.</p>
+
+        <ul class="link-list">
+          <li>
+            <div class="link-item">
+              <span class="link-item-dot" aria-hidden="true"></span>
+              <div class="link-item-content">
+                <a href="https://www.law.cornell.edu/" target="_blank" rel="noopener noreferrer">Cornell Legal Information Institute (LII)</a>
+                <span class="link-desc">A comprehensive, free legal resource from Cornell Law School offering access to the U.S. Code, the Code of Federal Regulations, Supreme Court opinions, and plain-language explanations of legal topics.</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.75rem;">This section is being expanded. Additional free legal resources will be added here in the future.</p>
+      </div>
+    </article>
+
+    <!-- TIPS SECTION -->
+    <section class="tips-section" aria-labelledby="tips-heading">
+      <h2 id="tips-heading">Tips for Legal Research</h2>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p><strong>Start with the right jurisdiction.</strong> Legal issues may be governed by local, state, or federal law, or a combination. Knowing which jurisdiction applies to your situation will help you search in the right place.</p>
+        </div>
+        <div class="tip-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <p><strong>Check for current versions.</strong> Laws change frequently. Always verify that the statute or ordinance you are reading is the most recent version. Government websites generally provide the current text.</p>
+        </div>
+        <div class="tip-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <p><strong>Ask for help.</strong> Law Library staff can assist you with finding legal resources and locating relevant materials. We cannot provide legal advice, but we are happy to point you in the right direction.</p>
+        </div>
+        <div class="tip-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <p><strong>Visit the Law Library.</strong> In addition to online resources, the Law Library maintains a collection of legal reference materials. You do not need a library card and everyone is welcome.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HELP BANNER -->
+    <section class="help-banner" aria-labelledby="help-heading">
+      <h3 id="help-heading">Need Help Finding a Resource?</h3>
+      <p>Law Library staff are available to help you locate legal resources and research materials. We cannot provide legal advice, but we can help point you to the materials you need.</p>
+      <a href="/contact">
+        Contact the Law Library
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Santa Barbara County Law Library · 1100 Anacapa Street, 2nd Floor, Santa Barbara, CA 93101 · <a href="tel:805-568-2297">(805) 568-2297</a></p>
+  <p style="margin-top: 0.35rem;">Connecting the public to the law: free, open, and accessible to all.</p>
+</footer>
+
+</body>
+</html>
